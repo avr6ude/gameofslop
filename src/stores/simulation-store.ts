@@ -32,23 +32,17 @@ const DEFAULT_HEIGHT = 150;
 export const useSimulationStore = create<SimulationState>((set, get) => {
   const engine = new SimulationEngine(DEFAULT_WIDTH, DEFAULT_HEIGHT);
 
-  // Auto-randomize on first load so the grid isn't empty
-  engine.grid.randomize(0.3, 8);
-
   engine.setOnTick(() => {
     get().notifyTick();
   });
-
-  const initialPops = engine.grid.countPopulations();
-  const initialTox = engine.computeToxicity();
 
   return {
     engine,
     generation: 0,
     running: false,
     speed: 200,
-    populations: initialPops,
-    toxicity: initialTox,
+    populations: {},
+    toxicity: { value: 0, label: 'The Internet Is Healing' },
     gridSize: { width: DEFAULT_WIDTH, height: DEFAULT_HEIGHT },
     wrap: true,
     renderVersion: 1,
