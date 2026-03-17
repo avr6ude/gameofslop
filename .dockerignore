@@ -1,0 +1,6 @@
+node_modules
+dist
+.git
+.claude
+*.tsbuildinfo
+.DS_Store
