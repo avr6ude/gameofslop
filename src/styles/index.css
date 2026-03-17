@@ -1,0 +1,192 @@
+/* Global reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: "Pixelated MS Sans Serif", "Microsoft Sans Serif", Tahoma, Arial, sans-serif;
+  font-size: 13px;
+}
+
+/* Desktop */
+.desktop {
+  position: fixed;
+  inset: 0;
+  background: #008080;
+  overflow: hidden;
+}
+
+/* Window as flex column so body fills remaining space */
+.window {
+  min-width: 140px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Title bar cursor override */
+.title-bar {
+  user-select: none;
+  flex-shrink: 0;
+}
+
+/* Menu bar styles (98.css doesn't include menus) */
+.window-menu-bar {
+  border-bottom: 1px solid #808080;
+  flex-shrink: 0;
+}
+
+/* Window body fills available space */
+.window-body {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+}
+
+/* Status bar tweaks */
+.status-bar {
+  display: flex;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.status-bar-field {
+  flex: 1;
+  padding: 2px 6px;
+  font-size: 13px;
+}
+
+/* Canvas container */
+.sunken-panel canvas {
+  display: block;
+}
+
+/* Fieldset tweaks */
+fieldset {
+  padding: 6px 10px 10px;
+  margin: 0;
+}
+
+fieldset legend {
+  font-size: 13px;
+}
+
+/* Scrollbar for canvas area */
+.sunken-panel {
+  overflow: auto;
+}
+
+/* Radio label hover */
+label:hover {
+  background: rgba(0, 0, 128, 0.05);
+}
+
+/* Taskbar */
+.taskbar button {
+  font-size: 13px;
+}
+
+/* Resize handle for windows with CSS resize */
+.window[style*="resize"] {
+  overflow: hidden !important;
+}
+
+/* ============================================
+   Win98-style scrollbars
+   ============================================ */
+
+/* Firefox */
+.win98-scrollbar {
+  scrollbar-width: auto;
+  scrollbar-color: #c0c0c0 #dfdfdf;
+}
+
+/* Chrome / Edge / Safari */
+.win98-scrollbar::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+}
+
+.win98-scrollbar::-webkit-scrollbar-track {
+  background-color: #dfdfdf;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2' height='2'%3E%3Crect width='1' height='1' fill='%23bfbfbf'/%3E%3Crect x='1' y='1' width='1' height='1' fill='%23bfbfbf'/%3E%3C/svg%3E");
+  background-size: 2px 2px;
+}
+
+.win98-scrollbar::-webkit-scrollbar-thumb {
+  background: #c0c0c0;
+  border-top: 2px solid #ffffff;
+  border-left: 2px solid #ffffff;
+  border-right: 2px solid #555555;
+  border-bottom: 2px solid #555555;
+}
+
+.win98-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #d0d0d0;
+}
+
+.win98-scrollbar::-webkit-scrollbar-thumb:active {
+  background: #b0b0b0;
+  border-top: 2px solid #555555;
+  border-left: 2px solid #555555;
+  border-right: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
+}
+
+.win98-scrollbar::-webkit-scrollbar-button {
+  background: #c0c0c0;
+  border-top: 2px solid #ffffff;
+  border-left: 2px solid #ffffff;
+  border-right: 2px solid #555555;
+  border-bottom: 2px solid #555555;
+  display: block;
+  width: 16px;
+  height: 16px;
+}
+
+.win98-scrollbar::-webkit-scrollbar-button:active {
+  border-top: 2px solid #555555;
+  border-left: 2px solid #555555;
+  border-right: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
+}
+
+/* Arrow button icons */
+.win98-scrollbar::-webkit-scrollbar-button:single-button:vertical:decrement {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='4'%3E%3Cpolygon points='3,0 0,4 6,4' fill='black'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 6px 4px;
+}
+
+.win98-scrollbar::-webkit-scrollbar-button:single-button:vertical:increment {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='4'%3E%3Cpolygon points='3,4 0,0 6,0' fill='black'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 6px 4px;
+}
+
+.win98-scrollbar::-webkit-scrollbar-button:single-button:horizontal:decrement {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='6'%3E%3Cpolygon points='0,3 4,0 4,6' fill='black'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 4px 6px;
+}
+
+.win98-scrollbar::-webkit-scrollbar-button:single-button:horizontal:increment {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='6'%3E%3Cpolygon points='4,3 0,0 0,6' fill='black'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 4px 6px;
+}
+
+.win98-scrollbar::-webkit-scrollbar-corner {
+  background: #c0c0c0;
+}
