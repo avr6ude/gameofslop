@@ -99,6 +99,100 @@ label:hover {
 }
 
 /* ============================================
+   App Layout — responsive
+   ============================================ */
+
+.app-layout {
+  display: grid;
+  grid-template-columns: 270px 1fr;
+  grid-template-rows: 1fr;
+  gap: 4px;
+  padding: 4px;
+  height: calc(100vh - 46px);
+  overflow: hidden;
+}
+
+.app-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  overflow: auto;
+  min-height: 0;
+}
+
+.app-main {
+  min-height: 0;
+  min-width: 0;
+  display: flex;
+}
+
+.app-main > * {
+  flex: 1;
+  min-height: 0;
+  min-width: 0;
+}
+
+/* Mobile: stack vertically, game on top */
+@media (max-width: 768px) {
+  .app-layout {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr auto;
+    height: calc(100vh - 40px);
+    gap: 2px;
+    padding: 2px;
+  }
+
+  /* Game first in visual order */
+  .app-main {
+    order: -1;
+    min-height: 200px;
+  }
+
+  .app-sidebar {
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: hidden;
+    gap: 2px;
+    max-height: 45vh;
+  }
+
+  .app-sidebar > * {
+    min-width: 260px;
+    flex-shrink: 0;
+  }
+
+  /* Smaller text on mobile */
+  .status-bar-field {
+    font-size: 11px;
+    padding: 1px 4px;
+  }
+
+  fieldset {
+    padding: 4px 6px 6px;
+  }
+
+  .window .title-bar {
+    padding: 2px;
+  }
+
+  /* Hide window buttons, shrink taskbar */
+  .taskbar-win-btn {
+    display: none !important;
+  }
+
+  .taskbar {
+    height: 30px !important;
+  }
+}
+
+/* Very small screens */
+@media (max-width: 480px) {
+  .app-sidebar > * {
+    min-width: 220px;
+  }
+}
+
+/* ============================================
    Win98-style scrollbars
    ============================================ */
 

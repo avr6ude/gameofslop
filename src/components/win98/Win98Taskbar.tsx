@@ -125,25 +125,28 @@ export function Win98Taskbar({ windowTitles, ticker }: Win98TaskbarProps) {
       {/* Window separator */}
       <div style={{ width: '1px', height: '20px', background: '#808080', margin: '0 2px' }} />
 
-      {/* Window buttons */}
-      {Object.entries(windows).map(([id, win]) => {
-        if (!win.visible) return null;
-        return (
-          <button
-            key={id}
-            style={{
-              padding: '2px 8px',
-              fontSize: '13px',
-              minWidth: '80px',
-              textAlign: 'left',
-              fontWeight: activeWindow === id && !win.minimized ? 'bold' : 'normal',
-            }}
-            onClick={() => toggleWindow(id)}
-          >
-            {windowTitles[id] || id}
-          </button>
-        );
-      })}
+      {/* Window buttons — hidden on mobile */}
+      <div className="taskbar-windows" style={{ display: 'contents' }}>
+        {Object.entries(windows).map(([id, win]) => {
+          if (!win.visible) return null;
+          return (
+            <button
+              key={id}
+              className="taskbar-win-btn"
+              style={{
+                padding: '2px 8px',
+                fontSize: '13px',
+                minWidth: '80px',
+                textAlign: 'left',
+                fontWeight: activeWindow === id && !win.minimized ? 'bold' : 'normal',
+              }}
+              onClick={() => toggleWindow(id)}
+            >
+              {windowTitles[id] || id}
+            </button>
+          );
+        })}
+      </div>
 
       {/* Separator */}
       <div style={{ width: '1px', height: '20px', background: '#808080', margin: '0 2px' }} />

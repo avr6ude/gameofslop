@@ -30,29 +30,18 @@ export default function App() {
 
   return (
     <Win98Desktop>
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: '270px 1fr',
-        gridTemplateRows: '1fr',
-        gap: '4px',
-        padding: '4px',
-        height: 'calc(100vh - 46px)',
-        overflow: 'hidden',
-      }}>
+      {/* Desktop layout */}
+      <div className="app-layout">
         {/* Left sidebar: palette + stats stacked, scrollable */}
-        <div style={{
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '4px',
-          overflow: 'auto',
-          minHeight: 0,
-        }}>
+        <div className="app-sidebar">
           <PalettePanel />
           <StatsPanel />
         </div>
 
         {/* Main area: game fills remaining space */}
-        <GamePanel />
+        <div className="app-main">
+          <GamePanel />
+        </div>
       </div>
       <Win98Taskbar windowTitles={WINDOW_TITLES} ticker={<NewsTicker />} />
       <CRTEffect />
